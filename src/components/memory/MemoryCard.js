@@ -55,7 +55,6 @@ const MemoryCard = ({ image, onClick, className }) => {
 };
 
 MemoryCard.propTypes = {
-  children: PropTypes.any,
   image: PropTypes.any,
   onClick: PropTypes.func,
   className: PropTypes.string
