@@ -13,10 +13,15 @@ export const ModalContextProvider = ({ children }) => {
 
   return (
     <ModalContext.Provider 
-      value={[
-        [isOpen, canClose, openModal, closeModal, updateCanCloseState], 
-        [component, updateComponent]
-      ]}
+      value={{
+        isOpen, 
+        canClose, 
+        openModal, 
+        closeModal, 
+        updateCanCloseState, 
+        component, 
+        updateComponent
+      }}
     >
       {children}
     </ModalContext.Provider>

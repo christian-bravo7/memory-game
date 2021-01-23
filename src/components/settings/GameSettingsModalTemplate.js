@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import AppButton from '../app/AppButton';
 import MemoryBoardPlaceholder from '../memory/placeholders/MemoryBoardPlaceholder';
-import Title from '../shared/Title';
+import Text from '../shared/Text';
 import SliderRange from '../slider-range/SliderRange';
 
 const StyledGameSettingsModalTemplate = styled.div`
@@ -28,7 +28,8 @@ const GameSettingsModalTemplate = () => {
 
   return (
     <StyledGameSettingsModalTemplate>
-      <Title>Hello</Title>
+      <Text bold={true} size={24} marginB={14}>Welcome</Text>
+      <Text marginB={14}>Select the number of cards</Text>
       <SliderRange value={availableCards} onChange={updateAvailableCards} />
       <MemoryBoardContainer>
         <MemoryBoardPlaceholder cards={availableCards} />

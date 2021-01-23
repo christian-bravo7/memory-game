@@ -13,7 +13,17 @@ const RangeInput = styled.input`
 
 const RangeBubble = styled.div`
   position: absolute;
-  bottom: ${({ value }) => `${value * 1.5}px`};
+  top: 100%;
+  left: ${({ value }) => `${(value * 6) - 2}px`};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: ${({ theme }) => theme.rem(22)};
+  height: ${({ theme }) => theme.rem(22)};
+  color: white;
+  font-size: ${({ theme }) => theme.rem(12)};
+  background-color: ${({ theme }) => theme.primary};
+  border-radius: 50%;
 `;
 
 const SliderRange = ({ value, onChange }) => {

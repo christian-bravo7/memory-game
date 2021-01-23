@@ -47,10 +47,12 @@ const ModalCloseButton = styled.button`
 `;
 
 const AppModal = () => {
-  const [
-    [isOpen, canClose,, closeModal], 
-    [component]
-  ] = useContext(ModalContext);
+  const {
+    isOpen, 
+    canClose, 
+    closeModal, 
+    component
+  } = useContext(ModalContext);
 
   return (
     createPortal(

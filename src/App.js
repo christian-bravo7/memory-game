@@ -7,7 +7,7 @@ import AppModal from './components/app/AppModal';
 import GameSettingsModalTemplate from './components/settings/GameSettingsModalTemplate';
 import MemoryDashboard from './components/memory/MemoryDashboard';
 
-import 'normalize.css';
+import 'minireset.css';
 
 const App = () => {
   const [ availableCards ] = useState(4);
@@ -24,10 +24,10 @@ const App = () => {
 };
 
 const ButtonOpen = () => {
-  const [[,,openModal], [,setComponent]] = useContext(ModalContext);
+  const {openModal, updateComponent} = useContext(ModalContext);
 
   const setNewComponent = () => {
-    setComponent(<GameSettingsModalTemplate />);
+    updateComponent(<GameSettingsModalTemplate />);
     openModal();
   };
 
