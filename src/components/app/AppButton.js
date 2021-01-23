@@ -1,4 +1,4 @@
-const { default: styled } = require('styled-components');
+import { styled } from 'styled-components';
 
 const AppButton = styled.button`
   padding: ${({ theme }) => `${theme.rem(10)} ${theme.rem(20)}`};

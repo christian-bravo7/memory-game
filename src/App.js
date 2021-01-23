@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react';
 
-import MemoryDashboard from './components/memory/MemoryDashboard';
-
-import 'normalize.css';
 import { ModalContext, ModalContextProvider } from './context/ModalContext';
 import { GameSettingsContextProvider } from './context/GameSettingsContext';
 
 import AppModal from './components/app/AppModal';
-import GameSettingsModalTemplate from '@/components/settings/GameSettingsModalTemplate';
+import GameSettingsModalTemplate from './components/settings/GameSettingsModalTemplate';
+import MemoryDashboard from './components/memory/MemoryDashboard';
+
+import 'normalize.css';
 
 const App = () => {
   const [ availableCards ] = useState(4);
