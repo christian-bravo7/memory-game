@@ -2,23 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const MemoryCardSide = styled.div`
+import Card from '../shared/Card';
+
+const MemoryCardSide = styled(Card)`
   position: absolute;
   ${({ theme }) => theme['inset-0']};
   width: 100%;
   height: 100%;
-  background-color: white;
-  border-radius: ${({ theme }) => theme.rem(20)};
-  box-shadow: ${({ theme }) => theme.shadow()};
   transform-style: preserve-3d;
   backface-visibility: hidden;
+  cursor: pointer;
   transition: transform 0.5s;
 `;
 
 const MemoryCardSideBack = styled(MemoryCardSide)`
-  padding: ${({ theme }) => theme.rem(10)};
-  background-color: white;
   transform: rotateY(-180deg);
+  cursor: default;
 `;
 
 const StyledMemoryCardWrapper = styled.div`
@@ -48,7 +47,7 @@ const MemoryCard = ({ image, onClick, className }) => {
     >
       <MemoryCardSide />
       <MemoryCardSideBack>
-        <img src={image} alt="food"></img>
+        <img src={image} alt="card asset"></img>
       </MemoryCardSideBack>
     </StyledMemoryCardWrapper>
   );

@@ -44,6 +44,8 @@
     "eslint": "^7.18.0",
     "eslint-plugin-react": "^7.22.0",
     "prop-types": "^15.7.2",
+    "react-app-rewire-alias": "^0.2.0",
+    "react-app-rewired": "^2.1.8",
     "stylelint": "^13.8.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended": "^3.0.0",

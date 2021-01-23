@@ -1,26 +1,41 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-const SliderRange = (props) => {
+const StyledSliderRange = styled.div`
+  position: relative;
+  /* transform: rotate(-90deg); */
+`;
 
-  useEffect(()=>{
-    const ele = document.querySelector('.buble');
-    if (ele) {
-      ele.style.left = `${Number(props.value / 4)}px`;
-    }
-  });
+const RangeInput = styled.input`
+  /* transform-origin: 75px 75px; */
+`;
+
+const RangeBubble = styled.div`
+  position: absolute;
+  bottom: ${({ value }) => `${value * 1.5}px`};
+`;
+
+const SliderRange = ({ value, onChange }) => {
+
+  const onSliderChange = ({ target: { value: radius } }) => {
+    onChange(Number(radius));
+  };
 
   return (
-    <div>
-      <input step="2" type="range" min="4" max="20" value={props.value}
-        onChange={({ target: { value: radius } }) => {
-          props.onChange(Number(radius));
-        }}
+    <StyledSliderRange>
+      <RangeInput 
+        step="2" 
+        type="range" 
+        min="4" 
+        max="20" 
+        value={value}
+        onChange={onSliderChange}
       />
-      <div className="buble"> 
-        {props.value}
-      </div>
-    </div>
+      <RangeBubble value={value}> 
+        {value}
+      </RangeBubble>
+    </StyledSliderRange>
   );
 };
 
