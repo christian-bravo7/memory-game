@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import Card from '../../shared/Card';
 
 const MemoryCardPlaceholder = styled(Card)`

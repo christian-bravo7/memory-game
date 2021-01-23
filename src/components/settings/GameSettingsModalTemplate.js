@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import AppButton from '../app/AppButton';
 
+import AppButton from '../app/AppButton';
 import MemoryBoardPlaceholder from '../memory/placeholders/MemoryBoardPlaceholder';
 import Title from '../shared/Title';
 import SliderRange from '../slider-range/SliderRange';
