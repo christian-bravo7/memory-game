@@ -19,7 +19,6 @@ module.exports = {
   'plugins': [
     'react'
   ],
-
   'settings': {
     'react': {
       'pragma': 'React',
@@ -27,7 +26,6 @@ module.exports = {
       'version': 'detect',
     },
   },
-
   'rules': {
     'indent': [
       'error',
@@ -45,5 +43,6 @@ module.exports = {
       'error',
       'always'
     ],
+    'no-trailing-spaces': ['error']
   }
 };
