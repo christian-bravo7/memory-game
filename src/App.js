@@ -1,17 +1,17 @@
 import React, { useContext, useState } from 'react';
 
-import { ModalContext, ModalContextProvider } from './context/ModalContext';
-import { GameSettingsContextProvider } from './context/GameSettingsContext';
+import { ModalContext, ModalContextProvider } from '@/context/ModalContext';
+import { GameSettingsContextProvider } from '@/context/GameSettingsContext';
 
-import AppModal from './components/app/AppModal';
-import GameSettingsModalTemplate from './components/settings/GameSettingsModalTemplate';
-import MemoryDashboard from './components/memory/MemoryDashboard';
+import AppModal from '@/components/app/AppModal';
+import GameSettingsModalTemplate from '@/components/settings/GameSettingsModalTemplate';
+import MemoryDashboard from '@/components/memory/MemoryDashboard';
 
 import 'minireset.css';
 
 const App = () => {
-  const [ availableCards ] = useState(4);
-  
+  const [ availableCards ] = useState(16);
+
   return (
     <ModalContextProvider>
       <GameSettingsContextProvider>
@@ -34,7 +34,7 @@ const ButtonOpen = () => {
   return (
     <button onClick={setNewComponent}>Click</button>
   );
-  
+
 };
 
 export default App;

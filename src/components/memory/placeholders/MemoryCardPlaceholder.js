@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import Card from '../../shared/Card';
+import Card from '@/components/shared/Card';
 
 const MemoryCardPlaceholder = styled(Card)`
   width: ${({ theme }) => theme.rem(45)};

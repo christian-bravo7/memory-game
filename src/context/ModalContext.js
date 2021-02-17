@@ -12,14 +12,14 @@ export const ModalContextProvider = ({ children }) => {
   const closeModal = () => { updateOpenState(false); };
 
   return (
-    <ModalContext.Provider 
+    <ModalContext.Provider
       value={{
-        isOpen, 
-        canClose, 
-        openModal, 
-        closeModal, 
-        updateCanCloseState, 
-        component, 
+        isOpen,
+        canClose,
+        openModal,
+        closeModal,
+        updateCanCloseState,
+        component,
         updateComponent
       }}
     >

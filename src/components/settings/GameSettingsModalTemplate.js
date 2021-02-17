@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 
-import AppButton from '../app/AppButton';
-import MemoryBoardPlaceholder from '../memory/placeholders/MemoryBoardPlaceholder';
-import Text from '../shared/Text';
-import SliderRange from '../slider-range/SliderRange';
+import AppButton from '@/components/app/AppButton';
+import MemoryBoardPlaceholder from '@/components/memory/placeholders/MemoryBoardPlaceholder';
+import Text from '@/components/shared/Text';
+import SliderRange from '@/components/slider-range/SliderRange';
+import { GameSettingsContext } from '@/context/GameSettingsContext';
+import { ModalContext } from '@/context/ModalContext';
 
 const StyledGameSettingsModalTemplate = styled.div`
   display: flex;
@@ -25,6 +27,13 @@ const StartButtonContainer = styled.div`
 
 const GameSettingsModalTemplate = () => {
   const [ availableCards, updateAvailableCards ] = useState(4);
+  const { setCardAmounts } = useContext(GameSettingsContext);
+  const { closeModal } = useContext(ModalContext);
+
+  const startGame = () => {
+    setCardAmounts(availableCards);
+    closeModal();
+  };
 
   return (
     <StyledGameSettingsModalTemplate>
@@ -35,7 +44,7 @@ const GameSettingsModalTemplate = () => {
         <MemoryBoardPlaceholder cards={availableCards} />
       </MemoryBoardContainer>
       <StartButtonContainer>
-        <AppButton>Start</AppButton>
+        <AppButton onClick={startGame}>Start</AppButton>
       </StartButtonContainer>
     </StyledGameSettingsModalTemplate>
   );

@@ -1,4 +1,4 @@
-import generateUniqueRandomNumbers from './generateUniqueRandomNumbers';
+import generateUniqueRandomNumbers from '@/utils/generateUniqueRandomNumbers';
 
 const generateRandomNumberPairs = (pairs) => {
   const randomNumbers = generateUniqueRandomNumbers(pairs);

@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import MemoryCard from './MemoryCard';
-import generateRandomNumberPairs from '../../utils/generateRandomNumberPairs';
+import MemoryCard from '@/components/memory/MemoryCard';
+import { GameSettingsContext } from '@/context/GameSettingsContext';
 
 const maxWidthByCardsNumber = (cardsNumber) => {
-  return cardsNumber < 8 
-    ? '400px' 
+  return cardsNumber < 8
+    ? '400px'
     : cardsNumber < 16
       ? '600px'
       : cardsNumber < 24
@@ -31,31 +31,25 @@ const MemoryDashboardWrapper = styled.div`
   margin: 0 auto;
 `;
 
-const MemoryDashboard = ({ cards }) => {
+const MemoryDashboard = () => {
 
-  const randomNumberPairs = generateRandomNumberPairs(cards / 2);
-  const [numberPairs, setNumberPairs] = useState(randomNumberPairs);
-  const [activeCards, setActiveCards] = useState([]);
-
-  const handleCardActiveState = (cardIndex) => {
-    setActiveCards((activeCards) => [...activeCards, cardIndex]);
-  };
+  const {
+    cardAmounts,
+    activeCards,
+    numberPairsState,
+    handleCardActiveState } = useContext(GameSettingsContext);
 
   const cardActiveClass = (index) => {
     return activeCards.includes(index) ? 'active' : '';
   };
 
-  useEffect(() => {
-    setNumberPairs(() => generateRandomNumberPairs(cards / 2));
-  }, [cards]);
-
   return (
     <MemoryDashboardWrapper>
-      <StyledMemoryDashboard cards={cards}>
+      <StyledMemoryDashboard cards={cardAmounts}>
         {
-          numberPairs.map((number, index) => 
-            <MemoryCard 
-              key={index} 
+          numberPairsState.map((number, index) =>
+            <MemoryCard
+              key={index}
               image={require(`../../assets/img/food/${number}.svg`).default}
               className={`${cardActiveClass(index)}`}
               onClick={() => handleCardActiveState(index)}

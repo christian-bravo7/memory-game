@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-import Card from '../shared/Card';
+import Card from '@/components/shared/Card';
 
-import { ModalContext } from '../../context/ModalContext';
+import { ModalContext } from '@/context/ModalContext';
 
 const ModalBackdrop = styled.section`
   position: fixed;
@@ -48,9 +48,9 @@ const ModalCloseButton = styled.button`
 
 const AppModal = () => {
   const {
-    isOpen, 
-    canClose, 
-    closeModal, 
+    isOpen,
+    canClose,
+    closeModal,
     component
   } = useContext(ModalContext);
 

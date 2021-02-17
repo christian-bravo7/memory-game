@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import Card from '../shared/Card';
+import Card from '@/components/shared/Card';
 
 const MemoryCardSide = styled(Card)`
   position: absolute;
@@ -41,9 +41,9 @@ const StyledMemoryCardWrapper = styled.div`
 
 const MemoryCard = ({ image, onClick, className }) => {
   return (
-    <StyledMemoryCardWrapper 
+    <StyledMemoryCardWrapper
       className={className}
-      onClick={onClick} 
+      onClick={onClick}
     >
       <MemoryCardSide />
       <MemoryCardSideBack>
