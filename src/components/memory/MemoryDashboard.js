@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 import MemoryCard from '@/components/memory/MemoryCard';
 import { GameSettingsContext } from '@/context/GameSettingsContext';
@@ -37,7 +36,8 @@ const MemoryDashboard = () => {
     cardAmounts,
     activeCards,
     numberPairsState,
-    handleCardActiveState } = useContext(GameSettingsContext);
+    handleCardActiveState
+  } = useContext(GameSettingsContext);
 
   const cardActiveClass = (index) => {
     return activeCards.includes(index) ? 'active' : '';
@@ -59,10 +59,6 @@ const MemoryDashboard = () => {
       </StyledMemoryDashboard>
     </MemoryDashboardWrapper>
   );
-};
-
-MemoryDashboard.propTypes = {
-  cards: PropTypes.number.isRequired
 };
 
 export default MemoryDashboard;

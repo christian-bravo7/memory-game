@@ -6,10 +6,12 @@ export const GameSettingsContext = createContext();
 
 export const GameSettingsContextProvider = props => {
   const [cardAmounts, setCardAmounts] = useState(4);
+  const [activeCards, setActiveCards] = useState([]);
+  const [gameStep, setGameStep] = useState('menu');
 
   const numberPairs = generateRandomNumberPairs(cardAmounts / 2);
   const [numberPairsState, setNumberPairsState] = useState(numberPairs);
-  const [activeCards, setActiveCards] = useState([]);
+
 
   const handleCardActiveState = (cardIndex) => {
     setActiveCards((activeCards) => [...activeCards, cardIndex]);
@@ -24,10 +26,12 @@ export const GameSettingsContextProvider = props => {
       value={
         {
           cardAmounts,
-          activeCards,
           setCardAmounts,
+          activeCards,
           numberPairsState,
           handleCardActiveState,
+          gameStep,
+          setGameStep
         }
       }>
       {props.children}

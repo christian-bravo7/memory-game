@@ -5,6 +5,7 @@ import AppButton from '@/components/app/AppButton';
 import MemoryBoardPlaceholder from '@/components/memory/placeholders/MemoryBoardPlaceholder';
 import Text from '@/components/shared/Text';
 import SliderRange from '@/components/slider-range/SliderRange';
+
 import { GameSettingsContext } from '@/context/GameSettingsContext';
 import { ModalContext } from '@/context/ModalContext';
 
@@ -27,11 +28,12 @@ const StartButtonContainer = styled.div`
 
 const GameSettingsModalTemplate = () => {
   const [ availableCards, updateAvailableCards ] = useState(4);
-  const { setCardAmounts } = useContext(GameSettingsContext);
+  const { setCardAmounts, setGameStep } = useContext(GameSettingsContext);
   const { closeModal } = useContext(ModalContext);
 
   const startGame = () => {
     setCardAmounts(availableCards);
+    setGameStep('game');
     closeModal();
   };
 
