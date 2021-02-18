@@ -1,40 +1,27 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 
-import { ModalContext, ModalContextProvider } from '@/context/ModalContext';
-import { GameSettingsContextProvider } from '@/context/GameSettingsContext';
+import { GameSettingsContext } from '@/context/GameSettingsContext';
 
 import AppModal from '@/components/app/AppModal';
-import GameSettingsModalTemplate from '@/components/settings/GameSettingsModalTemplate';
+import GameMenu from '@/components/game-menu/GameMenu';
 import MemoryDashboard from '@/components/memory/MemoryDashboard';
 
 import 'minireset.css';
 
 const App = () => {
-  const [ availableCards ] = useState(16);
+
+  const { gameStep } = useContext(GameSettingsContext);
+
+  const isMenuActive = gameStep === 'menu';
 
   return (
-    <ModalContextProvider>
-      <GameSettingsContextProvider>
-        <MemoryDashboard cards={availableCards} />
-        <ButtonOpen />
-        <AppModal />
-      </GameSettingsContextProvider>
-    </ModalContextProvider>
+    <div>
+      {
+        isMenuActive ? <GameMenu /> : <MemoryDashboard />
+      }
+      <AppModal />
+    </div>
   );
-};
-
-const ButtonOpen = () => {
-  const {openModal, updateComponent} = useContext(ModalContext);
-
-  const setNewComponent = () => {
-    updateComponent(<GameSettingsModalTemplate />);
-    openModal();
-  };
-
-  return (
-    <button onClick={setNewComponent}>Click</button>
-  );
-
 };
 
 export default App;
