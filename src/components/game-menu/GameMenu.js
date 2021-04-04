@@ -1,9 +1,53 @@
 import React, { useContext } from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import { ModalContext } from '@/context/ModalContext';
 
 import GameSettingsModalTemplate from '@/components/settings/GameSettingsModalTemplate';
-import GameMenuButton from '@/components/game-menu/GameMenuButton';
+import RevealCard from '@/components/reveal-card/RevealCard';
+
+const GameMenuContainer = styled.div`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+`;
+
+const GameMenuControls = styled.div`
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: ${({ theme }) => theme.rem(24)};
+  align-items: center;
+`;
+
+const GameMenuButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: ${({ theme }) => theme.rem(16)};
+  line-height: 1.5;
+  text-align: center;
+  border-radius: ${({ theme }) => theme.rem(20)};
+`;
+
+const GameMenuButtonWithImage = ({ imageName }) => {
+  const image = require(`../../assets/img/global/${imageName}.svg`).default;
+
+  return (
+    <img
+      src={image}
+      alt={imageName}
+    />
+  );
+};
+
+GameMenuButtonWithImage.propTypes = {
+  imageName: PropTypes.string,
+};
+
 
 const GameMenu = () => {
   const {openModal, updateComponent} = useContext(ModalContext);
@@ -14,9 +58,28 @@ const GameMenu = () => {
   };
 
   return (
-    <div>
-      <GameMenuButton onClick={setNewComponent} />
-    </div>
+    <GameMenuContainer>
+      <GameMenuControls>
+        <RevealCard
+          onClick={setNewComponent}
+          activeOnHover={true}
+          frontSlot={<GameMenuButtonWithImage imageName="cards" />}
+          backSlot={<GameMenuButton>Start new game</GameMenuButton>}
+        />
+        <RevealCard
+          onClick={setNewComponent}
+          activeOnHover={true}
+          frontSlot={<GameMenuButtonWithImage imageName="roller" />}
+          backSlot={<GameMenuButton>Customize game</GameMenuButton>}
+        />
+        <RevealCard
+          onClick={setNewComponent}
+          activeOnHover={true}
+          frontSlot={<GameMenuButtonWithImage imageName="excalibur" />}
+          backSlot={<GameMenuButton>Scoreboard</GameMenuButton>}
+        />
+      </GameMenuControls>
+    </GameMenuContainer>
   );
 };
 

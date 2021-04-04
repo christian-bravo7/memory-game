@@ -60,7 +60,9 @@ const AppModal = () => {
       <ModalBackdrop>
         <ModalCard>
           { canClose &&
-            <ModalCloseButton onClick={closeModal} >x</ModalCloseButton>
+            <ModalCloseButton onClick={closeModal} >
+              x
+            </ModalCloseButton>
           }
           <div>{component}</div>
         </ModalCard>

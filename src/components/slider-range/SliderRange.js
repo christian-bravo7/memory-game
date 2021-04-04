@@ -40,7 +40,7 @@ const RangeBubble = styled.div`
 
 const SliderRange = ({ value, onChange }) => {
 
-  const onSliderChange = ({ target: { value: radius } }) => {
+  const handleChange = ({ target: { value: radius } }) => {
     onChange(Number(radius));
   };
 
@@ -52,7 +52,7 @@ const SliderRange = ({ value, onChange }) => {
         min="4"
         max="20"
         value={value}
-        onChange={onSliderChange}
+        onChange={handleChange}
       />
       <RangeBubble value={value}>
         {value}

@@ -24,7 +24,6 @@ const RevealCardWrapper = styled.div`
   position: relative;
   width: ${({ theme }) => theme.rem(120)};
   height: ${({ theme }) => theme.rem(120)};
-  margin: ${({ theme }) => theme.rem(10)};
   perspective: 1000;
 
   &.active, &.active-hover:hover {

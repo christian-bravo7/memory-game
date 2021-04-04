@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import styled from 'styled-components';
 
 import { GameSettingsContext } from '@/context/GameSettingsContext';
 
@@ -8,6 +9,12 @@ import MemoryDashboard from '@/components/memory/MemoryDashboard';
 
 import 'minireset.css';
 
+const AppContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
+
 const App = () => {
 
   const { gameStep } = useContext(GameSettingsContext);
@@ -15,12 +22,12 @@ const App = () => {
   const isMenuActive = gameStep === 'menu';
 
   return (
-    <div>
+    <AppContainer>
       {
         isMenuActive ? <GameMenu /> : <MemoryDashboard />
       }
       <AppModal />
-    </div>
+    </AppContainer>
   );
 };
 

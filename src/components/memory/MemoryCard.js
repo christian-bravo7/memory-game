@@ -8,7 +8,12 @@ const MemoryCard = ({ image, onClick, className }) => {
     <RevealCard
       className={className}
       onClick={onClick}
-      backSlot={<img src={image} alt="card asset"></img>}
+      backSlot={
+        <img
+          src={image}
+          alt="card asset"
+        />
+      }
     />
   );
 };

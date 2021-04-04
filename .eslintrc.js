@@ -43,6 +43,7 @@ module.exports = {
       'error',
       'always'
     ],
-    'no-trailing-spaces': ['error']
+    'no-trailing-spaces': ['error'],
+    'react/jsx-max-props-per-line': ['error', { 'maximum': 1 }]
   }
 };

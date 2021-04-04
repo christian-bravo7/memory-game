@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import MemoryCard from '@/components/memory/MemoryCard';
+
 import { GameSettingsContext } from '@/context/GameSettingsContext';
 
 const maxWidthByCardsNumber = (cardsNumber) => {
@@ -39,9 +40,7 @@ const MemoryDashboard = () => {
     handleCardActiveState
   } = useContext(GameSettingsContext);
 
-  const cardActiveClass = (index) => {
-    return activeCards.includes(index) ? 'active' : '';
-  };
+  const cardActiveClass = (index) => activeCards.includes(index) ? 'active' : '';
 
   return (
     <MemoryDashboardWrapper>
