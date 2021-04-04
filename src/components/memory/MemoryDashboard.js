@@ -31,8 +31,11 @@ const MemoryDashboardWrapper = styled.div`
   margin: 0 auto;
 `;
 
-const MemoryDashboard = () => {
+const StyledMemoryCard = styled(MemoryCard)`
+  margin: 8px;
+`;
 
+const MemoryDashboard = () => {
   const {
     cardAmounts,
     activeCards,
@@ -47,7 +50,7 @@ const MemoryDashboard = () => {
       <StyledMemoryDashboard cards={cardAmounts}>
         {
           numberPairsState.map((number, index) =>
-            <MemoryCard
+            <StyledMemoryCard
               key={index}
               image={require(`../../assets/img/food/${number}.svg`).default}
               className={`${cardActiveClass(index)}`}
