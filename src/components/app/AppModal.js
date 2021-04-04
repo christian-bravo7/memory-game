@@ -1,11 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { hideModal } from '@/store/modal/actions';
 
 import Card from '@/components/shared/Card';
-
-import { ModalContext } from '@/context/ModalContext';
 
 const ModalBackdrop = styled.section`
   position: fixed;
@@ -46,21 +48,14 @@ const ModalCloseButton = styled.button`
   }
 `;
 
-const AppModal = () => {
-  const {
-    isOpen,
-    canClose,
-    closeModal,
-    component
-  } = useContext(ModalContext);
-
+const AppModal = ({ isActive, isClosable, component, hideModal }) => {
   return (
     createPortal(
-      isOpen &&
+      isActive &&
       <ModalBackdrop>
         <ModalCard>
-          { canClose &&
-            <ModalCloseButton onClick={closeModal} >
+          { isClosable &&
+            <ModalCloseButton onClick={hideModal} >
               x
             </ModalCloseButton>
           }
@@ -72,8 +67,21 @@ const AppModal = () => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  isActive: state.modal.isActive,
+  isClosable: state.modal.isClosable,
+  component: state.modal.component,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  ...bindActionCreators({ hideModal }, dispatch)
+});
+
 AppModal.propTypes = {
-  canClose: PropTypes.bool,
+  isActive: PropTypes.bool,
+  isClosable: PropTypes.bool,
+  component: PropTypes.element,
+  hideModal: PropTypes.func
 };
 
-export default AppModal;
+export default connect(mapStateToProps, mapDispatchToProps)(AppModal);

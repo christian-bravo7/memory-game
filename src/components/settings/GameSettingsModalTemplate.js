@@ -1,12 +1,16 @@
 import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import { hideModal } from '@/store/modal/actions';
 
 import Text from '@/components/shared/Text';
 import AppButton from '@/components/shared/AppButton';
 import SliderRange from '@/components/slider-range/SliderRange';
 import MemoryBoardPlaceholder from '@/components/memory/placeholders/MemoryBoardPlaceholder';
 
-import { ModalContext } from '@/context/ModalContext';
 import { GameSettingsContext } from '@/context/GameSettingsContext';
 
 const StyledGameSettingsModalTemplate = styled.div`
@@ -26,15 +30,14 @@ const StartButtonContainer = styled.div`
   justify-content: center;
 `;
 
-const GameSettingsModalTemplate = () => {
+const GameSettingsModalTemplate = ({ hideModal }) => {
   const [ availableCards, updateAvailableCards ] = useState(4);
   const { setCardAmounts, setGameStep } = useContext(GameSettingsContext);
-  const { closeModal } = useContext(ModalContext);
 
   const startGame = () => {
     setCardAmounts(availableCards);
     setGameStep('game');
-    closeModal();
+    hideModal();
   };
 
   return (
@@ -65,4 +68,12 @@ const GameSettingsModalTemplate = () => {
   );
 };
 
-export default GameSettingsModalTemplate;
+const mapDispatchToProps = (dispatch) => ({
+  ...bindActionCreators({ hideModal }, dispatch)
+});
+
+GameSettingsModalTemplate.propTypes = {
+  hideModal: PropTypes.func
+};
+
+export default connect(null, mapDispatchToProps)(GameSettingsModalTemplate);

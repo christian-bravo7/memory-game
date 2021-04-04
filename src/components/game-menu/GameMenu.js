@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-import { ModalContext } from '@/context/ModalContext';
+import { displayModalWithComponent } from '@/store/modal/actions';
 
 import GameSettingsModalTemplate from '@/components/settings/GameSettingsModalTemplate';
 import RevealCard from '@/components/reveal-card/RevealCard';
@@ -49,12 +51,9 @@ GameMenuButtonWithImage.propTypes = {
 };
 
 
-const GameMenu = () => {
-  const {openModal, updateComponent} = useContext(ModalContext);
-
+const GameMenu = ({ displayModalWithComponent }) => {
   const setNewComponent = () => {
-    updateComponent(<GameSettingsModalTemplate />);
-    openModal();
+    displayModalWithComponent({ component: <GameSettingsModalTemplate /> });
   };
 
   return (
@@ -83,4 +82,12 @@ const GameMenu = () => {
   );
 };
 
-export default GameMenu;
+const mapDispatchToProps = (dispatch) => ({
+  ...bindActionCreators({ displayModalWithComponent }, dispatch)
+});
+
+GameMenu.propTypes = {
+  displayModalWithComponent: PropTypes.func,
+};
+
+export default connect(null, mapDispatchToProps)(GameMenu);
