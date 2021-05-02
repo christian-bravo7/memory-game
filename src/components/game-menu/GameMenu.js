@@ -9,6 +9,10 @@ import { displayModalWithComponent } from '@/store/modal/actions';
 import GameSettingsModalTemplate from '@/components/settings/GameSettingsModalTemplate';
 import RevealCard from '@/components/reveal-card/RevealCard';
 
+import cardsImage from '@/assets/img/global/cards.svg';
+import rollerImage from '@/assets/img/global/roller.svg';
+import excaliburImage from '@/assets/img/global/excalibur.svg';
+
 const GameMenuContainer = styled.div`
   display: flex;
   flex: 1;
@@ -24,7 +28,7 @@ const GameMenuControls = styled.div`
   align-items: center;
 `;
 
-const GameMenuButton = styled.div`
+const GameMenuControl = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,19 +39,15 @@ const GameMenuButton = styled.div`
   border-radius: ${({ theme }) => theme.rem(20)};
 `;
 
-const GameMenuButtonWithImage = ({ imageName }) => {
-  const image = require(`../../assets/img/global/${imageName}.svg`).default;
+const GameMenuControlWithImage = ({ image }) => (
+  <img
+    src={image}
+    alt="control"
+  />
+);
 
-  return (
-    <img
-      src={image}
-      alt={imageName}
-    />
-  );
-};
-
-GameMenuButtonWithImage.propTypes = {
-  imageName: PropTypes.string,
+GameMenuControlWithImage.propTypes = {
+  image: PropTypes.string,
 };
 
 
@@ -62,20 +62,20 @@ const GameMenu = ({ displayModalWithComponent }) => {
         <RevealCard
           onClick={setNewComponent}
           activeOnHover={true}
-          frontSlot={<GameMenuButtonWithImage imageName="cards" />}
-          backSlot={<GameMenuButton>Start new game</GameMenuButton>}
+          frontSlot={<GameMenuControlWithImage image={cardsImage} />}
+          backSlot={<GameMenuControl>Start new game</GameMenuControl>}
         />
         <RevealCard
           onClick={setNewComponent}
           activeOnHover={true}
-          frontSlot={<GameMenuButtonWithImage imageName="roller" />}
-          backSlot={<GameMenuButton>Customize game</GameMenuButton>}
+          frontSlot={<GameMenuControlWithImage image={rollerImage} />}
+          backSlot={<GameMenuControl>Customize game</GameMenuControl>}
         />
         <RevealCard
           onClick={setNewComponent}
           activeOnHover={true}
-          frontSlot={<GameMenuButtonWithImage imageName="excalibur" />}
-          backSlot={<GameMenuButton>Scoreboard</GameMenuButton>}
+          frontSlot={<GameMenuControlWithImage image={excaliburImage} />}
+          backSlot={<GameMenuControl>Scoreboard</GameMenuControl>}
         />
       </GameMenuControls>
     </GameMenuContainer>
