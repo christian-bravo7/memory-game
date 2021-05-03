@@ -39,16 +39,16 @@ const StyledMemoryCard = styled(MemoryCard)`
   margin: 8px;
 `;
 
-const MemoryDashboard = ({ cardAmounts, activeCards, numberPairs, setActiveCards }) => {
+const MemoryDashboard = ({ totalCardsInGame, activeCards, numberPairs, setActiveCards }) => {
   const cardActiveClass = (index) => activeCards.includes(index) ? 'active' : '';
 
-  if (cardAmounts === 0) {
+  if (totalCardsInGame === 0) {
     return (<Redirect to="/"></Redirect>);
   }
 
   return (
     <NewGameContainer>
-      <NewGameBoard cards={cardAmounts}>
+      <NewGameBoard cards={totalCardsInGame}>
         {
           numberPairs.map((number, index) =>
             <StyledMemoryCard
@@ -65,7 +65,7 @@ const MemoryDashboard = ({ cardAmounts, activeCards, numberPairs, setActiveCards
 };
 
 const mapStateToProps = (state) => ({
-  cardAmounts: state.gameSettings.cardAmounts,
+  totalCardsInGame: state.gameSettings.totalCardsInGame,
   activeCards: state.gameSettings.activeCards,
   numberPairs: state.gameSettings.numberPairs,
 });
@@ -75,7 +75,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 MemoryDashboard.propTypes = {
-  cardAmounts: propTypes.number.isRequired,
+  totalCardsInGame: propTypes.number.isRequired,
   activeCards: propTypes.array.isRequired,
   numberPairs: propTypes.array.isRequired,
   setActiveCards: propTypes.func.isRequired,

@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { useHistory } from 'react-router-dom';
 
 import { hideModal } from '@/store/modal/actionCreators';
-import { setCardAmounts } from '@/store/game-settings/actionCreators';
+import { setTotalCardsInGame } from '@/store/game-settings/actionCreators';
 
 import Text from '@/components/shared/Text';
 import AppButton from '@/components/shared/AppButton';
@@ -30,12 +30,12 @@ const StartButtonContainer = styled.div`
   justify-content: center;
 `;
 
-const GameSettingsModalTemplate = ({ hideModal, setCardAmounts }) => {
+const GameSettingsModalTemplate = ({ hideModal, setTotalCardsInGame }) => {
   const [ availableCards, updateAvailableCards ] = useState(4);
   const history = useHistory();
 
   const startGame = () => {
-    setCardAmounts(availableCards);
+    setTotalCardsInGame(availableCards);
     hideModal();
     history.push('/new-game');
   };
@@ -69,12 +69,12 @@ const GameSettingsModalTemplate = ({ hideModal, setCardAmounts }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  ...bindActionCreators({ hideModal, setCardAmounts }, dispatch)
+  ...bindActionCreators({ hideModal, setTotalCardsInGame }, dispatch)
 });
 
 GameSettingsModalTemplate.propTypes = {
   hideModal: PropTypes.func,
-  setCardAmounts: PropTypes.func,
+  setTotalCardsInGame: PropTypes.func,
 };
 
 export default connect(null, mapDispatchToProps)(GameSettingsModalTemplate);

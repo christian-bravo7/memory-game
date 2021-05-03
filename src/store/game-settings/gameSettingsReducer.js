@@ -6,7 +6,7 @@ import {
 } from '@/store/game-settings/actionTypes';
 
 const initialState = {
-  cardAmounts: 0,
+  totalCardsInGame: 0,
   activeCards: [],
   numberPairs: [],
 };
@@ -16,9 +16,9 @@ const setActiveCards = (state, { cardIndex }) => ({
   activeCards: [...state.activeCards, cardIndex]
 });
 
-const setCardAmounts = (state, { cards }) => ({
+const setTotalCardsInGame = (state, { cards }) => ({
   ...state,
-  cardAmounts: cards,
+  totalCardsInGame: cards,
   numberPairs: generateRandomNumberPairs(cards / 2)
 });
 
@@ -26,7 +26,7 @@ const setCardAmounts = (state, { cards }) => ({
 const gameSettingsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
   case SET_CARD_AMOUNTS:
-    return setCardAmounts(state, payload);
+    return setTotalCardsInGame(state, payload);
   case SET_ACTIVE_CARDS:
     return setActiveCards(state, payload);
   default:

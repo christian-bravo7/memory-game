@@ -8,7 +8,7 @@ export const setActiveCards = (cardIndex) => ({
   payload: { cardIndex }
 });
 
-export const setCardAmounts = (cards) => ({
+export const setTotalCardsInGame = (cards) => ({
   type: SET_CARD_AMOUNTS,
   payload: { cards }
 });
