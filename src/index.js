@@ -8,17 +8,13 @@ import theme from '@/theme';
 import reportWebVitals from '@/reportWebVitals';
 import store from '@/store';
 
-import { GameSettingsContextProvider } from '@/context/GameSettingsContext';
-
 import '@/index.css';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <GameSettingsContextProvider>
-          <App />
-        </GameSettingsContextProvider>
+        <App />
       </ThemeProvider>
     </Provider>
   </React.StrictMode>,

@@ -1,0 +1,3 @@
+export const SET_CARD_AMOUNTS = 'SET_CARD_AMOUNTS';
+export const SET_GAME_STEP = 'SET_GAME_STEP';
+export const SET_ACTIVE_CARDS = 'SET_ACTIVE_CARDS';

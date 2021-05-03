@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { hideModal } from '@/store/modal/actions';
+import { hideModal } from '@/store/modal/actionCreators';
 
 import Card from '@/components/shared/Card';
 

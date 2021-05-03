@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-
-import { GameSettingsContext } from '@/context/GameSettingsContext';
+import { connect } from 'react-redux';
+import propTypes from 'prop-types';
 
 import AppModal from '@/components/app/AppModal';
 import GameMenu from '@/components/game-menu/GameMenu';
@@ -15,10 +15,7 @@ const AppContainer = styled.section`
   min-height: 100vh;
 `;
 
-const App = () => {
-
-  const { gameStep } = useContext(GameSettingsContext);
-
+const App = ({gameStep}) => {
   const isMenuActive = gameStep === 'menu';
 
   return (
@@ -31,4 +28,12 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  gameStep: state.gameSettings.gameStep
+});
+
+App.propTypes = {
+  gameStep: propTypes.string
+};
+
+export default connect(mapStateToProps)(App);

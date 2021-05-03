@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { displayModalWithComponent } from '@/store/modal/actions';
+import { displayModalWithComponent } from '@/store/modal/actionCreators';
 
 import GameSettingsModalTemplate from '@/components/settings/GameSettingsModalTemplate';
 import RevealCard from '@/components/reveal-card/RevealCard';

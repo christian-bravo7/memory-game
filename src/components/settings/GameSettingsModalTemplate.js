@@ -1,17 +1,16 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { hideModal } from '@/store/modal/actions';
+import { hideModal } from '@/store/modal/actionCreators';
+import { setCardAmounts, setGameStep } from '@/store/game-settings/actionCreators';
 
 import Text from '@/components/shared/Text';
 import AppButton from '@/components/shared/AppButton';
 import SliderRange from '@/components/slider-range/SliderRange';
 import MemoryBoardPlaceholder from '@/components/memory/placeholders/MemoryBoardPlaceholder';
-
-import { GameSettingsContext } from '@/context/GameSettingsContext';
 
 const StyledGameSettingsModalTemplate = styled.div`
   display: flex;
@@ -30,9 +29,8 @@ const StartButtonContainer = styled.div`
   justify-content: center;
 `;
 
-const GameSettingsModalTemplate = ({ hideModal }) => {
+const GameSettingsModalTemplate = ({ hideModal, setCardAmounts, setGameStep }) => {
   const [ availableCards, updateAvailableCards ] = useState(4);
-  const { setCardAmounts, setGameStep } = useContext(GameSettingsContext);
 
   const startGame = () => {
     setCardAmounts(availableCards);
@@ -69,11 +67,13 @@ const GameSettingsModalTemplate = ({ hideModal }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  ...bindActionCreators({ hideModal }, dispatch)
+  ...bindActionCreators({ hideModal, setCardAmounts, setGameStep }, dispatch)
 });
 
 GameSettingsModalTemplate.propTypes = {
-  hideModal: PropTypes.func
+  hideModal: PropTypes.func,
+  setCardAmounts: PropTypes.func,
+  setGameStep: PropTypes.func,
 };
 
 export default connect(null, mapDispatchToProps)(GameSettingsModalTemplate);
