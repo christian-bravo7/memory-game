@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
+import { Switch, Route } from 'react-router-dom';
 
 import AppModal from '@/components/app/AppModal';
 import GameMenu from '@/components/game-menu/GameMenu';
@@ -15,25 +16,24 @@ const AppContainer = styled.section`
   min-height: 100vh;
 `;
 
-const App = ({gameStep}) => {
-  const isMenuActive = gameStep === 'menu';
-
+const App = () => {
   return (
     <AppContainer>
-      {
-        isMenuActive ? <GameMenu /> : <MemoryDashboard />
-      }
+      <Switch>
+        <Route
+          exact
+          path="/"
+          component={GameMenu}
+        ></Route>
+        <Route
+          exact
+          path="/game"
+          component={MemoryDashboard}
+        ></Route>
+      </Switch>
       <AppModal />
     </AppContainer>
   );
 };
 
-const mapStateToProps = (state) => ({
-  gameStep: state.gameSettings.gameStep
-});
-
-App.propTypes = {
-  gameStep: propTypes.string
-};
-
-export default connect(mapStateToProps)(App);
+export default App;

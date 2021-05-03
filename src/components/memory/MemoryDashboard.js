@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 import proptypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 
 import MemoryCard from '@/components/memory/MemoryCard';
 
@@ -40,6 +41,10 @@ const StyledMemoryCard = styled(MemoryCard)`
 
 const MemoryDashboard = ({ cardAmounts, activeCards, numberPairs, setActiveCards }) => {
   const cardActiveClass = (index) => activeCards.includes(index) ? 'active' : '';
+
+  if (cardAmounts === 0) {
+    return (<Redirect to="/"></Redirect>);
+  }
 
   return (
     <MemoryDashboardWrapper>

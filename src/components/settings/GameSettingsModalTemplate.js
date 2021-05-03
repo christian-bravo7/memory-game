@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 
 import { hideModal } from '@/store/modal/actionCreators';
-import { setCardAmounts, setGameStep } from '@/store/game-settings/actionCreators';
+import { setCardAmounts } from '@/store/game-settings/actionCreators';
 
 import Text from '@/components/shared/Text';
 import AppButton from '@/components/shared/AppButton';
@@ -29,13 +30,14 @@ const StartButtonContainer = styled.div`
   justify-content: center;
 `;
 
-const GameSettingsModalTemplate = ({ hideModal, setCardAmounts, setGameStep }) => {
+const GameSettingsModalTemplate = ({ hideModal, setCardAmounts }) => {
   const [ availableCards, updateAvailableCards ] = useState(4);
+  const history = useHistory();
 
   const startGame = () => {
     setCardAmounts(availableCards);
-    setGameStep('game');
     hideModal();
+    history.push('/game');
   };
 
   return (
@@ -67,13 +69,12 @@ const GameSettingsModalTemplate = ({ hideModal, setCardAmounts, setGameStep }) =
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  ...bindActionCreators({ hideModal, setCardAmounts, setGameStep }, dispatch)
+  ...bindActionCreators({ hideModal, setCardAmounts }, dispatch)
 });
 
 GameSettingsModalTemplate.propTypes = {
   hideModal: PropTypes.func,
   setCardAmounts: PropTypes.func,
-  setGameStep: PropTypes.func,
 };
 
 export default connect(null, mapDispatchToProps)(GameSettingsModalTemplate);
