@@ -1,5 +1,5 @@
 import React from 'react';
-import proptypes from 'prop-types';
+import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -75,10 +75,10 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 MemoryDashboard.propTypes = {
-  cardAmounts: proptypes.number.isRequired,
-  activeCards: proptypes.array.isRequired,
-  numberPairs: proptypes.array.isRequired,
-  setActiveCards: proptypes.func.isRequired,
+  cardAmounts: propTypes.number.isRequired,
+  activeCards: propTypes.array.isRequired,
+  numberPairs: propTypes.array.isRequired,
+  setActiveCards: propTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MemoryDashboard);
