@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { useHistory } from 'react-router-dom';
 
 import { hideModal } from '@/store/modal/actionCreators';
@@ -10,8 +10,8 @@ import { setCardAmounts } from '@/store/game-settings/actionCreators';
 
 import Text from '@/components/shared/Text';
 import AppButton from '@/components/shared/AppButton';
-import SliderRange from '@/components/slider-range/SliderRange';
-import MemoryBoardPlaceholder from '@/components/memory/placeholders/MemoryBoardPlaceholder';
+import SliderRange from '@/components/shared/SliderRange';
+import MemoryBoardPlaceholder from '@/components/new-game/placeholders/MemoryBoardPlaceholder';
 
 const StyledGameSettingsModalTemplate = styled.div`
   display: flex;
@@ -37,7 +37,7 @@ const GameSettingsModalTemplate = ({ hideModal, setCardAmounts }) => {
   const startGame = () => {
     setCardAmounts(availableCards);
     hideModal();
-    history.push('/game');
+    history.push('/new-game');
   };
 
   return (

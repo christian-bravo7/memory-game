@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 
 import { displayModalWithComponent } from '@/store/modal/actionCreators';
 
-import GameSettingsModalTemplate from '@/components/settings/GameSettingsModalTemplate';
 import RevealCard from '@/components/reveal-card/RevealCard';
+import GameSettingsModalTemplate from '@/components/modal/modal-components/GameSettings';
 
 import cardsImage from '@/assets/img/global/cards.svg';
 import rollerImage from '@/assets/img/global/roller.svg';

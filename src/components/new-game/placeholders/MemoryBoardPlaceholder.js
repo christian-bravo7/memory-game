@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import MemoryCardPlaceholder from '@/components/memory/placeholders/MemoryCardPlaceholder';
+import MemoryCardPlaceholder from '@/components/new-game/placeholders/MemoryCardPlaceholder';
 
 const maxWidthByCardsNumber = (cardsNumber) => {
   return cardsNumber < 8

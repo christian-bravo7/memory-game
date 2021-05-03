@@ -1,13 +1,13 @@
 import React from 'react';
+import proptypes from 'prop-types';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import styled from 'styled-components';
-import proptypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
-import MemoryCard from '@/components/memory/MemoryCard';
+import MemoryCard from '@/components/new-game/MemoryCard';
 
-import {setActiveCards} from '@/store/game-settings/actionCreators';
+import { setActiveCards } from '@/store/game-settings/actionCreators';
 
 const maxWidthByCardsNumber = (cardsNumber) => {
   return cardsNumber < 8
@@ -19,7 +19,7 @@ const maxWidthByCardsNumber = (cardsNumber) => {
         : '1000px';
 };
 
-const StyledMemoryDashboard = styled.div`
+const NewGameBoard = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -27,7 +27,7 @@ const StyledMemoryDashboard = styled.div`
   max-width: ${({ cards }) => maxWidthByCardsNumber(cards)};
 `;
 
-const MemoryDashboardWrapper = styled.div`
+const NewGameContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,20 +47,20 @@ const MemoryDashboard = ({ cardAmounts, activeCards, numberPairs, setActiveCards
   }
 
   return (
-    <MemoryDashboardWrapper>
-      <StyledMemoryDashboard cards={cardAmounts}>
+    <NewGameContainer>
+      <NewGameBoard cards={cardAmounts}>
         {
           numberPairs.map((number, index) =>
             <StyledMemoryCard
               key={index}
-              image={require(`../../assets/img/food/${number}.svg`).default}
+              image={require(`../assets/img/food/${number}.svg`).default}
               className={`${cardActiveClass(index)}`}
               onClick={() => setActiveCards(index)}
             />
           )
         }
-      </StyledMemoryDashboard>
-    </MemoryDashboardWrapper>
+      </NewGameBoard>
+    </NewGameContainer>
   );
 };
 

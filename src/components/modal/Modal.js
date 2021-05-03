@@ -1,7 +1,7 @@
 import React from 'react';
-import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -48,7 +48,7 @@ const ModalCloseButton = styled.button`
   }
 `;
 
-const AppModal = ({ isActive, isClosable, component, hideModal }) => {
+const Modal = ({ isActive, isClosable, component, hideModal }) => {
   return (
     createPortal(
       isActive &&
@@ -77,11 +77,11 @@ const mapDispatchToProps = (dispatch) => ({
   ...bindActionCreators({ hideModal }, dispatch)
 });
 
-AppModal.propTypes = {
+Modal.propTypes = {
   isActive: PropTypes.bool,
   isClosable: PropTypes.bool,
   component: PropTypes.element,
   hideModal: PropTypes.func
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppModal);
+export default connect(mapStateToProps, mapDispatchToProps)(Modal);

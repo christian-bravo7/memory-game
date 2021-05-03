@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
-import propTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
 
-import AppModal from '@/components/app/AppModal';
-import GameMenu from '@/components/game-menu/GameMenu';
-import MemoryDashboard from '@/components/memory/MemoryDashboard';
+import NewGame from '@/pages/NewGame';
+import GameMenu from '@/pages/GameMenu';
+import Modal from '@/components/modal/Modal';
 
 import 'minireset.css';
 
@@ -27,11 +25,11 @@ const App = () => {
         ></Route>
         <Route
           exact
-          path="/game"
-          component={MemoryDashboard}
+          path="/new-game"
+          component={NewGame}
         ></Route>
       </Switch>
-      <AppModal />
+      <Modal />
     </AppContainer>
   );
 };
