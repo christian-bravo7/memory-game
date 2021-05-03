@@ -39,7 +39,13 @@ const StyledMemoryCard = styled(MemoryCard)`
   margin: 8px;
 `;
 
-const MemoryDashboard = ({ totalCardsInGame, activeCards, numberPairs, setActiveCards }) => {
+const MemoryDashboard = ({
+  totalCardsInGame,
+  numbersWithIndices,
+  activeCards,
+  numberPairs,
+  setActiveCards
+}) => {
   const cardActiveClass = (index) => activeCards.includes(index) ? 'active' : '';
 
   if (totalCardsInGame === 0) {
@@ -66,6 +72,7 @@ const MemoryDashboard = ({ totalCardsInGame, activeCards, numberPairs, setActive
 
 const mapStateToProps = (state) => ({
   totalCardsInGame: state.gameSettings.totalCardsInGame,
+  numbersWithIndices: state.gameSettings.numbersWithIndices,
   activeCards: state.gameSettings.activeCards,
   numberPairs: state.gameSettings.numberPairs,
 });
@@ -76,6 +83,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 MemoryDashboard.propTypes = {
   totalCardsInGame: propTypes.number.isRequired,
+  numbersWithIndices: propTypes.array.isRequired,
   activeCards: propTypes.array.isRequired,
   numberPairs: propTypes.array.isRequired,
   setActiveCards: propTypes.func.isRequired,

@@ -16,11 +16,16 @@ const setActiveCards = (state, { cardIndex }) => ({
   activeCards: [...state.activeCards, cardIndex]
 });
 
-const setTotalCardsInGame = (state, { cards }) => ({
-  ...state,
-  totalCardsInGame: cards,
-  numberPairs: generateRandomNumberPairs(cards / 2)
-});
+const setTotalCardsInGame = (state, { cards }) => {
+  const { randomNumberPairs, numberPairsWithIndices } = generateRandomNumberPairs(cards / 2);
+
+  return {
+    ...state,
+    numberPairsWithIndices,
+    totalCardsInGame: cards,
+    numberPairs: randomNumberPairs,
+  };
+};
 
 
 const gameSettingsReducer = (state = initialState, { type, payload }) => {
