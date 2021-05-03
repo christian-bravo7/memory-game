@@ -1,12 +1,17 @@
 const generateUniqueRandomNumbers = (numbers) => {
   const uniqueRandomNumbers = [];
 
-  while (uniqueRandomNumbers.length < numbers) {
-    const randomNumber = Math.floor(Math.random() * 10);
+  let randomIndex = Math.floor(Math.random() * 10);
 
-    if (uniqueRandomNumbers.indexOf(randomNumber) === -1) {
-      uniqueRandomNumbers.push(randomNumber);
+  for (let i = 0; i < numbers; i++) {
+
+    if (randomIndex === 9) {
+      randomIndex = 0;
     }
+
+    uniqueRandomNumbers.push(randomIndex);
+
+    randomIndex++;
   }
 
   return uniqueRandomNumbers;
